@@ -22,7 +22,7 @@
 }
 .hero {
 }
-.hero__img {
+#hero__img {
   background-image: url(/images/hero.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -31,8 +31,8 @@
   height: 54px;
 
   position: absolute;
-  left: 50%;
-  bottom: 15%;
+  left: 300px;
+  bottom: 12%;
 }
 
 .hero__left {
