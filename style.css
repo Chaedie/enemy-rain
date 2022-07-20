@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 600px;
+  position: relative;
+  /* transform: translate(-50%, -50%); */
+}
+
+.bg__img {
+  /* position: absolute; */
+  left: 50%;
+  top: 50%;
+  width: 700px;
+  /* object-fit: contain; */
+}
+.hero {
+}
+.hero__img {
+  background-image: url(/images/hero.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: 33.3%; */
+  width: 35px;
+  height: 54px;
+
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+}
+
+.hero__left {
+  background-position: 66.6%;
+}
+
+.hero__right {
+  background-position: 100%;
+}
