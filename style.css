@@ -2,7 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90vw;
+  height: 90vh;
 }
+
+.score {
+  text-align: center;
+}
+
 #bg {
   display: flex;
   justify-content: center;

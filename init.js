@@ -3,6 +3,7 @@ const bg = document.querySelector('#bg');
 const enemy = document.querySelector('.enemy__img');
 
 const MOVE_POS = 15;
+let gameScore = 0;
 
 window.addEventListener('keydown', (e) => {
   hero.style.left = window.getComputedStyle(hero).left;
@@ -17,26 +18,6 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-const enemyDown = () => {
-  enemy.style.top = window.getComputedStyle(enemy).top;
-  enemy.style.left = window.getComputedStyle(enemy).left;
-  hero.style.left = window.getComputedStyle(hero).left;
-
-  const heroPositionLeft = parseInt(hero.style.left);
-  const enemyPositionLeft = parseInt(enemy.style.left);
-  const enemyPositionTop = parseInt(enemy.style.top);
-
-  if (enemyPositionTop < 480) {
-    enemy.style.top = enemyPositionTop + MOVE_POS + 'px';
-  } else {
-    if (heroPositionLeft - 54 < enemyPositionLeft && enemyPositionLeft < heroPositionLeft + 54) {
-      return (enemy.className = 'enemy__img enemy__die');
-    } else {
-      enemy.style.display = 'none';
-    }
-  }
-};
-
 const enemyCreate = () => {
   let id = ids.length;
   const enemyInstance = document.createElement('div');
@@ -45,16 +26,11 @@ const enemyCreate = () => {
   enemyInstance.className = 'enemy__img';
   bg.appendChild(enemyInstance);
   ids.push(id);
-  console.log(ids);
-  console.log(ids.length);
   setInterval(newEnemyDown, 100, id);
 };
 
 const newEnemyDown = (id) => {
   const newEnemy = document.getElementById(`${id}`);
-
-  console.log(`#${id.toString()}`);
-  console.log(id);
 
   newEnemy.style.top = window.getComputedStyle(newEnemy).top;
   newEnemy.style.left = window.getComputedStyle(newEnemy).left;
@@ -68,6 +44,9 @@ const newEnemyDown = (id) => {
     newEnemy.style.top = enemyPositionTop + MOVE_POS + 'px';
   } else {
     if (heroPositionLeft - 54 < enemyPositionLeft && enemyPositionLeft < heroPositionLeft + 54) {
+      gameScore = gameScore + 1;
+      console.log('들어옴');
+      setScore();
       return (newEnemy.className = 'enemy__img enemy__die');
     } else {
       newEnemy.style.display = 'none';
@@ -75,8 +54,12 @@ const newEnemyDown = (id) => {
   }
 };
 
-// setInterval(enemyDown, 50);
-// setInterval(enemiesDown, 50);
+const score = document.querySelector('.score__span');
+const setScore = () => {
+  score.innerHTML = gameScore;
+  console.log(gameScore);
+};
+
 const ids = [0];
 enemyCreate();
 setInterval(enemyCreate, 1000);
