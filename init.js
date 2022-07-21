@@ -16,7 +16,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-function enemyCreate() {
+function createEnemy() {
   let id = ids.length;
   const enemy = document.createElement('div');
   enemy.id = id;
@@ -52,5 +52,5 @@ const setScore = () => {
 };
 
 const ids = [0];
-enemyCreate();
-setInterval(enemyCreate, 1000);
+createEnemy();
+setInterval(createEnemy, 1000);
