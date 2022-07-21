@@ -20,13 +20,11 @@
   width: 700px;
   /* object-fit: contain; */
 }
-.hero {
-}
+
 #hero__img {
   background-image: url(/images/hero.png);
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-position: 33.3%; */
   width: 35px;
   height: 54px;
 
@@ -40,5 +38,24 @@
 }
 
 .hero__right {
+  background-position: 100%;
+}
+
+.enemy__img {
+  background-image: url(/images/enemy.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  width: 45px;
+  height: 54px;
+
+  position: absolute;
+  left: 300px;
+  top: 8%;
+  /* top: 510px; */
+  /* bottom: 12%; */
+}
+
+.enemy__die {
   background-position: 100%;
 }
