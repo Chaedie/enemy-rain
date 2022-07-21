@@ -1,9 +1,9 @@
 const hero = document.querySelector('#hero__img');
 const MOVE_POS = 15;
 const bg = document.querySelector('#bg');
-const enemyInstance = document.createElement('div');
 
 hero.style.left = window.getComputedStyle(hero).left;
+
 window.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') {
     hero.className = 'hero__left';
@@ -15,19 +15,30 @@ window.addEventListener('keydown', (e) => {
 });
 
 const enemy = document.querySelector('.enemy__img');
+const enemies = document.querySelectorAll('.enemy__img');
+const enemyInstance = document.createElement('div');
 
 const enemyDown = () => {
-  if (parseInt(enemy.style.top) > 510) {
-    enemy.style.display = 'none';
-  }
-
   enemy.style.top = window.getComputedStyle(enemy).top;
-  console.log(enemy.style.top);
-  enemy.style.top = parseInt(enemy.style.top) + MOVE_POS + 'px';
-  console.log(enemy.style.top);
-  // while (parseInt(enemy.style.top) < 510) {
-  //   enemy.style.top -= parseInt(enemy.style.top) - MOVE_POS + 'px';
-  // }
+  enemy.style.left = window.getComputedStyle(enemy).left;
+  hero.style.left = window.getComputedStyle(hero).left;
+  //
+  const heroPositionLeft = parseInt(hero.style.left);
+  const enemyPositionLeft = parseInt(enemy.style.left);
+  const enemyPositionTop = parseInt(enemy.style.top);
+
+  if (enemyPositionTop < 480) {
+    enemy.style.top = enemyPositionTop + MOVE_POS + 'px';
+  } else {
+    if (heroPositionLeft - 54 < enemyPositionLeft && enemyPositionLeft < heroPositionLeft + 54) {
+      return (enemy.className = 'enemy__img enemy__die');
+    } else {
+      enemy.style.display = 'none';
+    }
+    // enemy.style.top = enemyPositionTop + MOVE_POS + 'px';
+    // if (enemyPositionTop > 510) {
+    // }
+  }
 };
 
 const enemyCreate = () => {
@@ -36,4 +47,4 @@ const enemyCreate = () => {
 };
 
 setInterval(enemyDown, 50);
-setInterval(enemyCreate, 200);
+// setInterval(enemyCreate, 200);
